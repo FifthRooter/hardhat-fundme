@@ -18,7 +18,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
 
     let ethUsdPriceFeedAddress
     if (developmentChains.includes(network.name)) {
-        const ethUsdAggregators = await deployments.get("MockV3Aggregator")
+        const ethUsdAggregator = await deployments.get("MockV3Aggregator")
         ethUsdPriceFeedAddress = ethUsdAggregator.address
     } else {
         ethUsdPriceFeedAddress = networkConfig[chainId]["ethUsdPriceFeed"]
@@ -26,7 +26,18 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
 
     const fundMe = await deploy("FundMe", {
         from: deployer,
-        args: [],
+        args: [ethUsdPriceFeedAddress],
         log: true,
     })
+
+    if (
+        !developmentChains.includes(network.name) &&
+        process.env.ETHERSCAN_API_KEY
+    ) {
+    }
+    console.log(
+        "================================================================"
+    )
 }
+
+module.exports.tags = ["all", "fundme"]
