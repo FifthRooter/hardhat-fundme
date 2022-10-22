@@ -1,5 +1,7 @@
 {
-  "name": "hardhat-project",
+  "name": "hardhat-fundme",
+  "author": "arbestor",
+  "version": "1.0.0",
   "devDependencies": {
     "@chainlink/contracts": "^0.5.1",
     "@nomicfoundation/hardhat-toolbox": "^2.0.0",
@@ -13,5 +15,13 @@
   },
   "dependencies": {
     "dotenv": "^16.0.3"
+  },
+  "scripts":{
+    "test": "npx hardhat test",
+    "test:staging": "npx hardhat test --network goerli",
+    "lint": "npx solhint 'contracts/*.sol",
+    "lint:fix": "npx solhint 'contract/*.sol' --fix",
+    "format": "npx prettier --write .",
+    "coverage": "npx hardhat coverage"
   }
 }

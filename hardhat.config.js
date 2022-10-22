@@ -17,9 +17,8 @@ module.exports = {
     },
     defaultNetwork: "hardhat",
     networks: {
-        ropsten: {
-            url: process.env.ROPSTEN_URL || "",
-            accounts: [],
+        hardhat: {
+            chainId: 31337,
         },
         goerli: {
             url: GOERLI_RPC_URL || "",
