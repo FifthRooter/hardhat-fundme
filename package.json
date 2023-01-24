@@ -16,7 +16,7 @@
   "dependencies": {
     "dotenv": "^16.0.3"
   },
-  "scripts":{
+  "scripts": {
     "test": "npx hardhat test",
     "test:staging": "npx hardhat test --network goerli",
     "lint": "npx solhint 'contracts/*.sol",
